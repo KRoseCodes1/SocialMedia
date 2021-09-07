@@ -1,4 +1,7 @@
-﻿using System.Security.Claims;
+﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -28,6 +31,30 @@ namespace SocialMedia.Data
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+        public Dbset<Post> Posts { get; set; }
+        public Dbset<Comment> Comments { get; set; }
+        public Dbset<Reply> Replies { get; set; }
+        public Dbset<Like> Likes { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Configurations.Add(new IdentityUserLoginConfiguration()).Add(new IdentityUserRoleConfigurations());
+
+        }
+    }
+    public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
+    {
+        public IdentityUserLoginConfiguration()
+        {
+            HasKey(iul => iul.UserId);
+        }
+    }
+    public class IdentityUserRoleConfigurations : EntityTypeConfiguration<IdentityUserRole>
+    {
+        public IdentityUserRoleConfigurations()
+        {
+            HasKey(iur => iur.UserId);
         }
     }
 }

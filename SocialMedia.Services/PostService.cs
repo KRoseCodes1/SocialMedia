@@ -55,5 +55,15 @@ namespace SocialMedia.Services
                 entity.Text = model.Text;
                 return ctx.SaveChanges() == 1;
             }
+        }
+        public bool DeletePost(int postId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Posts.Single(e => e.Id == postId && e.AuthorId == _userId);
+                ctx.Posts.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

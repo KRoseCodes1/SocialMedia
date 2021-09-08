@@ -54,5 +54,13 @@ namespace SocialMedia_Api.Controllers
                 return InternalServerError();
             return Ok();
         }
+        [HttpDelete]
+        public IHttpActionResult DeletePost(int id)
+        {
+            var service = CreatePostService();
+            if (!service.DeletePost(id))
+                return InternalServerError();
+            return Ok();
+        }
     }
 }

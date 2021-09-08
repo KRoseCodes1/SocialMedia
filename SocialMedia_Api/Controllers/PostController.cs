@@ -19,16 +19,40 @@ namespace SocialMedia_Api.Controllers
             var postService = new PostService(userId);
             return postService;
         }
-        public IHttpActionResult Get()
+        [HttpGet]
+        public IHttpActionResult GetAll()
         {
             PostService postService = CreatePostService();
-            var posts = postService.GetPosts();
+            var posts = postService.GetAllPosts();
             return Ok(posts);
         }
-        public IHttpActionResult Post(PostCreate post)
+        [HttpGet]
+        [Route("[action]")]
+        public IHttpActionResult GetAllByAuthor()
+        {
+                PostService postService = CreatePostService();
+                var posts = postService.GetPostsById();
+                return Ok(posts);
+        }
+        [HttpPost]
+        public IHttpActionResult CreateNewPost(PostCreate post)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
+            var service = CreatePostService();
+            if (!service.CreatePost(post))
+                return InternalServerError();
+            return Ok();
+        }
+        [HttpPut]
+        public IHttpActionResult UpdateCurrentPost(PostEdit post)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var service = CreatePostService();
+            if (!service.UpdatePost(post))
+                return InternalServerError();
+            return Ok();
         }
     }
 }

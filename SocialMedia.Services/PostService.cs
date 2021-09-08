@@ -30,7 +30,7 @@ namespace SocialMedia.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<PostListItem> GetPosts()
+        public IEnumerable<PostListItem> GetPostsById()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -38,5 +38,22 @@ namespace SocialMedia.Services
                 return query.ToArray();
             }
         }
+        public IEnumerable<PostListItem> GetAllPosts()
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var posts = ctx.Posts.Select(e => new PostListItem { Id = e.Id, Title = e.Title, Text = e.Text });
+                return posts.ToArray();
+            }
+        }
+        public bool UpdatePost(PostEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Posts.Single(e => e.Id == model.Id && e.AuthorId == _userId);
+                entity.Title = model.Title;
+                entity.Text = model.Text;
+                return ctx.SaveChanges() == 1;
+            }
     }
 }

@@ -23,11 +23,23 @@ namespace SocialMedia.Models
             set {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var _comments = ctx.Comments.Where(e => e.AuthorId == AuthorId).Select(e => new CommentListItem { Id = e.Id, Text = e.Text });
+                    var _comments = ctx.Comments.Where(e => e.PostId == Id).Select(e => new CommentListItem { Id = e.Id, Text = e.Text, AuthorId = e.AuthorId });
                 }
             }
         }
-        public virtual List<Like> Likes { get; set; }
+        public virtual List<Like> Likes {
+            get
+            {
+                return _likes;
+            }
+            set
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var _comments = ctx.Comments.Where(e => e.PostId == Id).Select(e => new LikeListItem { Id = e.Id, OwnerId = e.OwnerId});
+                }
+            }
+        }
         [Required]
         public Guid AuthorId { get; set; }
     }

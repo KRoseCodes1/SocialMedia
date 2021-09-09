@@ -12,7 +12,6 @@ namespace SocialMedia.Models
 
         public string Text { get; set; }
 
-        public Guid AuthorId { get; set; }
     }
     public class CommentList
     {

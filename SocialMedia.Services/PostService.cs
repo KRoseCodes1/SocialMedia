@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Services
 {
+    //CODING HATES ME
     public class PostService
     {
         private readonly Guid _userId;

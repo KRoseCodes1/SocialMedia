@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Models
 {
+    // BOO
     public class PostEdit
     {
         public int Id { get; set; }

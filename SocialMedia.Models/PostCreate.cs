@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Models
 {
+    //NO
     public class PostCreate
     {
         [Required]

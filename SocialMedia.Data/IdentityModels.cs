@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
-using SocialMedia.Data;
+using SocialMedia.Models;
 
 namespace SocialMedia.Data
 {
@@ -28,14 +28,14 @@ namespace SocialMedia.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-
+        
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<Reply> Replies { get; set; }
+        //public DbSet<Comment> Comments { get; set; }
+        //public DbSet<Reply> Replies { get; set; }
         //public DbSet<Like> Likes { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

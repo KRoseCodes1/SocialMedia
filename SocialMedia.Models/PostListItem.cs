@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SocialMedia.Data
+namespace SocialMedia.Models
 {
-    public class Reply
+    public class PostListItem
     {
-        public int ReplyId { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+     
         public string Text { get; set; }
-        public Guid AuthorId { get; set; }
-
     }
 }

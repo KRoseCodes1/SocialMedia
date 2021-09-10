@@ -214,6 +214,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LikeControler.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -317,6 +318,14 @@
     <ProjectReference Include="..\SocialMedia.Data\SocialMedia.Data.csproj">
       <Project>{A706490C-21A3-4BE0-8490-4C0F00EC2DA0}</Project>
       <Name>SocialMedia.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialMedia.Models\SocialMedia.Models.csproj">
+      <Project>{CB754929-B270-49FF-9CB3-5D2EF93986E8}</Project>
+      <Name>SocialMedia.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialMedia.Services\SocialMedia.Services.csproj">
+      <Project>{2F1EC81D-8516-4CB2-B576-63373701D888}</Project>
+      <Name>SocialMedia.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

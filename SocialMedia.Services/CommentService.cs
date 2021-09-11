@@ -30,10 +30,7 @@ namespace SocialMedia.Services
                     return false;
                 entity.Comments.Add(comment);
                 return ctx.SaveChanges() == 1;
-
             }
-
-
         }
         public IEnumerable<CommentList> GetCommentbyPostId()
         {

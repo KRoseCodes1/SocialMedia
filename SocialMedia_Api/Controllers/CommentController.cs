@@ -10,11 +10,9 @@ using System.Web.Http;
 
 namespace SocialMedia_Api.Controllers
 {
+    [Authorize]
     public class CommentController : ApiController
     {
-
-
-        [Authorize]
         private CommentService CreateComment()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

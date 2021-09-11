@@ -15,7 +15,7 @@ namespace SocialMedia.Models
     }
     public class CommentList
     {
-        public Guid PostId { get; set; }
+        public int PostId { get; set; }
     }
     public class AuthorComment
     {

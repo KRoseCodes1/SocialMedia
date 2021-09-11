@@ -17,18 +17,15 @@ namespace SocialMedia.Services
         }
         public bool CreateComment(CommentCreate model)
         {
-            var comment = new Comment()
+            var entity = new Comment()
             {
                 AuthorId = _userId,
-                Text = model.Text
+                Text = model.Text,
             };
-            using (var ctx = new ApplicationDbContext())
+
+            using(var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Posts.SingleOrDefault
-                    (e => e.PostId == model.PostId);
-                if (entity is null)
-                    return false;
-                entity.Comments.Add(comment);
+                ctx.Comments.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -37,7 +34,7 @@ namespace SocialMedia.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.Comments
-                                .Where(e => e.PostId == _userId)
+                                .Where(e => e.AuthorId == _userId)
                                 .Select(e => new CommentList
                                 {
                                     PostId = e.PostId
@@ -62,12 +59,12 @@ namespace SocialMedia.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                        .Comments
-                        .Single(e => e.CommentId == model.CommentId && e.Text == model.Text);
+                var entity =ctx
+                    .Comments
+                    .Single(e => e.PostId == model.CommentId && e.Text == model.Text);
+                
                 entity.Text = model.Text;
-                entity.CommentId = model.CommentId;
+                entity.Id = model.CommentId;
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -78,7 +75,7 @@ namespace SocialMedia.Services
                 var entity =
                     ctx
                        .Comments
-                       .Single(e => e.CommentId == commentId && e.AuthorId == _userId);
+                       .Single(e => e.Id == commentId && e.AuthorId == _userId);
                 ctx.Comments.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }

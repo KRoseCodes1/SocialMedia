@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SocialMedia.Models
+namespace SocialMedia.Data
 {
     //OOF
     public class Post

@@ -22,7 +22,8 @@ namespace SocialMedia.Services
             var entity = new Reply()
             {
                 AuthorId = _userId,
-                Text = model.Text
+                Text = model.Text,
+                CommentId = model.CommentId
             };
 
             using(var ctx = new ApplicationDbContext())
@@ -43,7 +44,8 @@ namespace SocialMedia.Services
                         new SingleReply
                         {
                             Id = e.Id,
-                            Text = e.Text
+                            Text = e.Text,
+                            CommentId = e.CommentId
                         }
                     );
                 return query.ToArray();

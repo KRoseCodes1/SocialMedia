@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SocialMedia.Data
+namespace SocialMedia.Models
 {
-    public class Comment
+    public class ReplyCreate
     {
-        [Key]
+        [Required]
         public int Id { get; set; }
+        public string Text { get; set; }
+
     }
 }

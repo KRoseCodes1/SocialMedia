@@ -216,6 +216,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReplyController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -293,6 +294,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Reply\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -303,6 +305,14 @@
     <ProjectReference Include="..\SocialMedia.Data\SocialMedia.Data.csproj">
       <Project>{A706490C-21A3-4BE0-8490-4C0F00EC2DA0}</Project>
       <Name>SocialMedia.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialMedia.Models\SocialMedia.Models.csproj">
+      <Project>{cb754929-b270-49ff-9cb3-5d2ef93986e8}</Project>
+      <Name>SocialMedia.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialMedia.Services\SocialMedia.Services.csproj">
+      <Project>{2f1ec81d-8516-4cb2-b576-63373701d888}</Project>
+      <Name>SocialMedia.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

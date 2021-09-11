@@ -12,7 +12,8 @@ namespace SocialMedia.Data
     public class Reply
     {
         [Key]
-        public int Id { get; set; }
+        [Column("Id")]
+        public int ReplyId { get; set; }
         public string Text { get; set; }
         public Guid AuthorId { get; set; }
         [ForeignKey(nameof(Comment))]

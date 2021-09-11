@@ -1,6 +1,7 @@
 ﻿using SocialMedia.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,14 @@ namespace SocialMedia.Models
         public virtual Post Post { get; set; }
 
     }
+    public class ReturnComment
+    {
+        public int Id { get; set; }
+        public string Text { get; set; }
+        public int PostId { get; set; }
+    }
+
+
     public class CommentList
     {
         public int PostId { get; set; }

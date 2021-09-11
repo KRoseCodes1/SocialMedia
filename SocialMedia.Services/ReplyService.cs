@@ -43,7 +43,7 @@ namespace SocialMedia.Services
                     .Select(e =>
                         new SingleReply
                         {
-                            Id = e.Id,
+                            Id = e.ReplyId,
                             Text = e.Text,
                             CommentId = e.CommentId
                         }

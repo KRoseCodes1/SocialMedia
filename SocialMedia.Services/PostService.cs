@@ -35,7 +35,7 @@ namespace SocialMedia.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Posts.Where(e => e.AuthorId == _userId).Select(e => new PostListItem { Id = e.Id, Title = e.Title, Text = e.Text });
+                var query = ctx.Posts.Where(e => e.AuthorId == _userId).Select(e => new PostListItem { Id = e.PostId, Title = e.Title, Text = e.Text });
                 return query.ToArray();
             }
         }
@@ -43,7 +43,7 @@ namespace SocialMedia.Services
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var posts = ctx.Posts.Select(e => new PostListItem { Id = e.Id, Title = e.Title, Text = e.Text });
+                var posts = ctx.Posts.Select(e => new PostListItem { Id = e.PostId, Title = e.Title, Text = e.Text });
                 return posts.ToArray();
             }
         }
@@ -51,7 +51,7 @@ namespace SocialMedia.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Posts.Single(e => e.Id == model.Id && e.AuthorId == _userId);
+                var entity = ctx.Posts.Single(e => e.PostId == model.Id && e.AuthorId == _userId);
                 entity.Title = model.Title;
                 entity.Text = model.Text;
                 return ctx.SaveChanges() == 1;
@@ -61,7 +61,7 @@ namespace SocialMedia.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Posts.Single(e => e.Id == postId && e.AuthorId == _userId);
+                var entity = ctx.Posts.Single(e => e.PostId == postId && e.AuthorId == _userId);
                 ctx.Posts.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }

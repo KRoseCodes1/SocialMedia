@@ -218,7 +218,7 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReplyController.cs" />
-    <Compile Include="Controllers\LikeControler.cs" />
+    <Compile Include="Controllers\LikeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

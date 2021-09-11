@@ -12,7 +12,7 @@ using SocialMedia.Data;
 
 namespace SocialMedia_Api.Controllers
 {
-    public class LikeControler : ApiController
+    public class LikeController : ApiController
     {
         
         private readonly ApplicationDbContext _context = new ApplicationDbContext();

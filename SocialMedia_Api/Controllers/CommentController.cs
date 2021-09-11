@@ -13,7 +13,7 @@ namespace SocialMedia_Api.Controllers
     [Authorize]
     public class CommentController : ApiController
     {
-        private CommentService CreateComment()
+        private CommentService CreateCommentService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var commentService = new CommentService(userId);
@@ -21,7 +21,7 @@ namespace SocialMedia_Api.Controllers
         }
         public IHttpActionResult Get()
         {
-            CommentService commentService = CreateComment();
+            CommentService commentService = CreateCommentService();
             var comments = commentService.GetCommentbyPostId();
             return Ok(comments);
         }
@@ -29,14 +29,14 @@ namespace SocialMedia_Api.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var service = CreateComment();
+            var service = CreateCommentService();
             if (!service.CreateComment(comment))
                 return InternalServerError();
             return Ok();
         }
         public IHttpActionResult Get(int AuthorId)
         {
-            CommentService commentService = CreateComment();
+            CommentService commentService = CreateCommentService();
             var comment = commentService.GetAuthorCommentsbyId();
             return Ok(comment);
 
@@ -45,7 +45,7 @@ namespace SocialMedia_Api.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var service = CreateComment();
+            var service = CreateCommentService();
             if (!service.UpdateComment(comment))
                 return InternalServerError();
             return Ok();
@@ -53,7 +53,7 @@ namespace SocialMedia_Api.Controllers
         }
         public IHttpActionResult Delete(int id)
         {
-            var service = CreateComment();
+            var service = CreateCommentService();
             if (!service.DeleteComment(id))
                 return InternalServerError();
             return Ok();

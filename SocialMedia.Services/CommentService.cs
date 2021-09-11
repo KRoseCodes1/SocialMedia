@@ -21,6 +21,7 @@ namespace SocialMedia.Services
             {
                 AuthorId = _userId,
                 Text = model.Text,
+                PostId = model.PostId
             };
 
             using(var ctx = new ApplicationDbContext())
@@ -29,16 +30,19 @@ namespace SocialMedia.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<CommentList> GetCommentbyPostId()
+        public IEnumerable<ReturnComment> GetCommentbyPostId()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Comments
-                                .Where(e => e.AuthorId == _userId)
-                                .Select(e => new CommentList
-                                {
-                                    PostId = e.PostId
-                                });
+                var query = ctx
+                    .Comments
+                    .Where(e => e.AuthorId == _userId)
+                    .Select(e => new ReturnComment
+                    {
+                        Id = e.CommentId,
+                        Text = e.Text,
+                        PostId = e.PostId          
+                    });
                 return query.ToArray();
             }
         }
@@ -64,7 +68,7 @@ namespace SocialMedia.Services
                     .Single(e => e.PostId == model.CommentId && e.Text == model.Text);
                 
                 entity.Text = model.Text;
-                entity.Id = model.CommentId;
+                entity.CommentId = model.CommentId;
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -75,7 +79,7 @@ namespace SocialMedia.Services
                 var entity =
                     ctx
                        .Comments
-                       .Single(e => e.Id == commentId && e.AuthorId == _userId);
+                       .Single(e => e.CommentId == commentId && e.AuthorId == _userId);
                 ctx.Comments.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }

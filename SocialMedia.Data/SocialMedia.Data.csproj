@@ -103,6 +103,10 @@
     <Compile Include="Migrations\202109111538325_FixingDB.designer.cs">
       <DependentUpon>202109111538325_FixingDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109111627394_ChangingIDsToWork.cs" />
+    <Compile Include="Migrations\202109111627394_ChangingIDsToWork.designer.cs">
+      <DependentUpon>202109111627394_ChangingIDsToWork.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Reply.cs" />
@@ -120,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109111538325_FixingDB.resx">
       <DependentUpon>202109111538325_FixingDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109111627394_ChangingIDsToWork.resx">
+      <DependentUpon>202109111627394_ChangingIDsToWork.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
